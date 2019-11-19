@@ -1,0 +1,22 @@
+{
+
+    "console": "none",
+    "code-runner.ignoreSelection": true,
+    "code-runner.runInTerminal": false,
+    "code-runner.preserveFocus": false,
+    "code-runner.saveFileBeforeRun": true,
+    "C_Cpp.updateChannel": "Insiders",
+    "terminal.integrated.shellArgs.windows": ["/K chcp 65001 >nul"],//解决终端中文乱码
+    "terminal.integrated.fontFamily": "Lucida Console",
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 14,
+    "C_Cpp.default.intelliSenseMode": "gcc-x64",
+    "C_Cpp.default.cppStandard": "c++17",//支持c++17标准
+    "C_Cpp.default.cStandard": "c11",//支持c11标准
+     
+    "files.encoding": "gb2312",//以中文的方式打开文件
+    "files.associations": {
+        "iostream": "cpp",
+        "vector": "cpp"
+    }
+}
