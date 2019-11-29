@@ -13,10 +13,10 @@
     "C_Cpp.default.intelliSenseMode": "gcc-x64",
     "C_Cpp.default.cppStandard": "c++17",//支持c++17标准
     "C_Cpp.default.cStandard": "c11",//支持c11标准
-     
     "files.encoding": "gb2312",//以中文的方式打开文件
     "files.associations": {
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ostream": "cpp"
     }
 }
