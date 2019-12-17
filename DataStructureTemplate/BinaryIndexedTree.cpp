@@ -10,16 +10,14 @@ private:
 public:
     BIT(vector<int>& nums)//构造函数初始化
     {
-        //初始化树状数组，注意下标0不计算前缀和
+        //原始数组每个元素对应的下标+1就是数组数组中的下标了，所以树状数组比原始数组多一个，树状数组的下标0在原始数组中没有对应的，设为0
         this->bitArray.resize(nums.size()+1);
         for(int i=0;i<nums.size();++i){
             this->bitArray[i+1]=nums[i];
         }
 
+        //j = i + (i & -i)，若j < n + 1，则bit[j] = bit[j] + bit[i]，建立树状数组
         for(int i=1;i<this->bitArray.size();++i){
-            //第一层就填充从第一个数字开始，长度为1，2，4，8的区间的区间和
-            //第二层就填充从剩余空白处第一个位置开始，长度为1，2，4的区间的区间和
-            //第三层就填充从最后剩余的空白第一个位置开始，长度为1的区间的区间和
             int j=i+(i&-i);
             if(j<this->bitArray.size()){
                 this->bitArray[j]+=this->bitArray[i];
@@ -27,7 +25,7 @@ public:
         }
     }
 
-    //idx表示下标，将delta加到第idx个位置上
+    //idx表示原始数组中的下标，idx+1表示树状数组中的下标
     void update(int idx,int delta){
         idx+=1;
         while(idx<this->bitArray.size()){
@@ -36,22 +34,20 @@ public:
         }
     }
 
-    //idx表示下标，[0,idx]范围内的元素和，第1个元素到第(idx+1)个元素的和
+    //从下标1开始计算
     int prefitSum(int idx){
         idx+=1;
         int result=0;
         while(idx>0){
             result+=this->bitArray[idx];
-            idx=idx-(idx&-idx);//
+            idx=idx-(idx&-idx);
         }
         return result;
     }
 
     //返回[from_idx,to_idx]范围内的所有数字和
     int rangeSum(int from_idx,int to_idx){
-        //[0,to_idx]范围内元素和减去[0,form_idx-1]范围内的元素和
-        //这里form_idx减1，比如form_idx等于0，减1后变为-1了，然后算prefitsum(-1)为0
-        return prefitSum(to_idx)-prefitSum(from_idx-1);
+        return prefitSum(to_idx)-prefitSum(from_idx-1);//当from_idx为0时，减1后为-1，计算prefitsum(-1)为0
     }
 };
 
