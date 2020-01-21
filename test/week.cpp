@@ -5,9 +5,8 @@ using namespace std;
 
 int main()
 {
-    string s="xiaonengcaoji";
-    int a[26];
-    memset(a,0,sizeof(a));
-    for(auto c:s)
-        a[c-'a']++;
+    int a=1;
+    int *b=&a;
+    cout<<b<<endl;
+    cout<<&a<<endl;
 }

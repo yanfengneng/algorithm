@@ -27,7 +27,9 @@ vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
 
 int mian()
 {
-    vector<vector<int>> grid={{3,8,1,9},{19,7,2,5},{4,6,11,10},{12,0,21,13}};
-    vector<vector<int>> result=shiftGrid(grid,4);
+    int a=1;
+    int *b=&a;
+    cout<<b<<endl;
+    cout<<&a<<endl;
     return 0;
 }
