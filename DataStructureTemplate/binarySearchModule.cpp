@@ -52,22 +52,21 @@ int search_3(vector<int>& nums,int x){
     return -1;
 }
 
-//模板4：万能模板，最后left为大于等于x的最小值，right为小于x的最大值
-//注：最后left在right右边时循环结束，也就是(right,left)
+//模板4：万能模板，在网上看到的二分板子，貌似这样并不会出错，只需要我们根据实际情况（check）逼近区间即可
 int all_search(vector<int>& nums,int x){
     if(nums.empty())return -1;
-    int left=0,right=nums.size()-1;
+    int left=0,right=nums.size()-1,ans=-1;
     while(left<=right){
         int mid=left+((right-left)>>1);
-        if(nums[mid]>=x)right=mid-1;
+        //向左逼近区间
+        if(nums[mid]>=x){
+            ans=mid;
+            right=mid-1;
+        }
+        //向右逼近区间
         else left=mid+1;
     }
-    //返回大于等于x的最小值
-    if(left<nums.size()&&nums[left]==x)return left;
-    else return -1;
-    //返回小于x的最大值
-    if(right==0)return right;
-    else return -1;
+    return ans;
 }
 
 int main()
