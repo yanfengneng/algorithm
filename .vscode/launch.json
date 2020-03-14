@@ -10,7 +10,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,//false显示终端，true显示控制台
+            "externalConsole": false,//false显示终端，true显示控制台
             "MIMode": "gdb",
             "miDebuggerPath": "D:\\MinGW-w64\\mingw64\\bin\\gdb.exe",//这里改成你的gdb.exe路径地址
             "preLaunchTask": "g++",
