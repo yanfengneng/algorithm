@@ -34,18 +34,15 @@ public:
 
     vector<int> get_next(const string &pat)
     {
-        vector<int> next;
-        next.push_back(-1);
         //指针j指向后缀，指针k指向前缀。
         int j = 0, k = -1, n = pat.size();
-        while (j < n - 1)
+        vector<int> next(n+1,-1);//注意这里的next数组为n+1，因为next[n-1]没有算上pat[n-1]这个字符最大后缀，所以只有next[n]才算上了pat[n-1]这个最大后缀
+        while (j < n )
         {
             //若k==-1或pat[j]==pat[k]，指针j、k同时右移一个单位，那么此时的next[j]赋值为k，因为此时k长度已增加1了
             if (k == -1 || pat[j] == pat[k])
             {
-                k++;
-                j++;
-                next.push_back(k);
+               next[++j]=++k;
             }
             //若k不等于-1和pat[j]不等于pat[k]时，指针k需要回退到next[k]的位置
             //若没有可以匹配的前缀和后缀，那么k最终会回到-1的位置
@@ -64,9 +61,9 @@ public:
         //换句话说nextVal[j]=k，即j指针之前相同前缀和后缀的最长长度为k
         //注意这里的k就为nextVal[j]，所以进行循环时，每次我们比较的是j和nextVal[j]=k
         int j = 0, k = -1, n = pat.size();
-        vector<int> nextVal(n, 1);
+        vector<int> nextVal(n, -1);//注意这里next数组大小为n
         nextVal[0] = -1;
-        while (j < n - 1)
+        while (j < n-1)
         {
             if (k == -1 || pat[j] == pat[k])
             {
@@ -99,5 +96,5 @@ public:
 
 int main()
 {
-  cout<<KMP().search("BBC ABCDAB ABCDABCDABDE","ABCDABD")<<endl;
+  cout<<KMP().search("BBC ABCDAB ABCDABCDABDE","ABCDAB")<<endl;
 }
