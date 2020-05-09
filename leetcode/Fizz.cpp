@@ -22,4 +22,6 @@ public:
 int main()
 {
     vector<string> res=Solution().fizzBuzz(3);
+    for(auto r:res)cout<<r<<" ";
+    cout<<endl;
 }
