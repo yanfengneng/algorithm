@@ -2,7 +2,7 @@
 
     "console": "none",
     "code-runner.ignoreSelection": true,
-    "code-runner.runInTerminal": false,
+    "code-runner.runInTerminal": true,
     "code-runner.preserveFocus": false,
     "code-runner.saveFileBeforeRun": true,
     "C_Cpp.updateChannel": "Insiders",
