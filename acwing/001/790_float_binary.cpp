@@ -4,8 +4,8 @@ using namespace std;
 int main()
 {
     double x;
-    //scanf("%lf",&x);
-    cin>>x;
+    scanf("%lf",&x);
+    //cin>>x;
     double l=-10000,r=10000;
     while(r-l>1e-8)
     {
