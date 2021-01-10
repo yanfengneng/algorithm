@@ -21,6 +21,11 @@ void quick_sort(int q[],int l,int r)
         // i找到大于等于x的，j找到小于等于x的，然后二者swap
         do ++i;while(q[i]<x);
         do --j;while(q[j]>x);
+        /*
+        不想写 do while 可以写下面两句
+        while(q[++i]<x);
+        while(q[--j]>x);
+        */
         if(i<j)swap(q[i],q[j]);
     }
     // 递归地处理左右两段
