@@ -5,7 +5,7 @@ using namespace std;
 const int N = 1e5+3;
 
 // hash函数的拉链法类比邻接表，也就是和邻接表一样的
-// idx表示当前可以使用的节点编号，在数组表示的临界表的单链表中，每个节点都有一个单独的编号，用idx表示
+// idx表示当前可以使用的节点编号，在数组表示的邻接表的单链表中，每个节点都有一个单独的编号，用idx表示
 int h[N],e[N],ne[N],idx=0;
 
 void insert(int x)
