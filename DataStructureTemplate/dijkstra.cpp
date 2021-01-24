@@ -25,7 +25,7 @@ int dijkstra(int s)
         if(v==-1)break; //表示所有顶点已经选择完成了
         used[v]=true;   //标记该顶点已使用，加入最短路了
 
-        //更新边{u,v}之间的距离，数值的更新也可优化
+        //更新边{v,u}之间的距离，数值的更新也可优化
         for(int u=1;u<=n;++u){
             dist[u]=min(dist[u],dist[v]+cost[v][u]);
         }
