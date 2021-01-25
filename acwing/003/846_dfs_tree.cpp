@@ -44,7 +44,7 @@ int dfs(int u)
     }
     // n-sum为子树上面一坨，取了max后，res为连通块最大的点数了
     res=max(res,n-sum);
-    // 总答案娶一个min
+    // 总答案取一个min
     ans=min(ans,res);
     // 返回该子树的
     return sum;
