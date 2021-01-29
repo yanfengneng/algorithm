@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// 质因数分解
 void divide(int n)
 {
     for(int i=2;i<=n/i;++i)
