@@ -1,11 +1,6 @@
-[684. 冗余连接](https://leetcode-cn.com/problems/redundant-connection/solution/rong-yu-lian-jie-by-leetcode-solution-pks2/)
+#include <bits/stdc++.h>
+using namespace std;
 
-[947. 移除最多的同行或同列石头](https://leetcode-cn.com/problems/most-stones-removed-with-same-row-or-column/)
-
-[1202. 交换字符串中的元素](https://leetcode-cn.com/problems/smallest-string-with-swaps/)
-
-**并查集模板：**
-```cpp
 class UnionFind
 {
 private:
@@ -15,9 +10,9 @@ private:
 public:
     UnionFind(int n)    // 构造函数初始化对象
     {
-        father.resize(n),len.resize(n);
+        father.resize(n+1),len.resize(n+1);
         cnt=n;
-        for(int i=0;i<n;++i)
+        for(int i=1;i<=n;++i)
         {
             father[i]=i;    // 初始化时父节点指向本身
             len[i]=1;       // 初始化时每个树大小为1
@@ -27,8 +22,12 @@ public:
     int find(int x)     // 查询树的根
     {
         // 在查询所有父节点过程中，顺便进行路径压缩
-        if(father[x]!=x)return father[x]=find(father[x]);
-        else return x;
+        while(father[x]!=x)
+        {
+            father[x]=father[father[x]];
+            x=father[x];
+        }
+        return x;
     }
 
     void merge(int x,int y) // 合并x和y所属的集合
@@ -51,4 +50,24 @@ public:
 
     int count(){return cnt;}
 };
-```
+
+int n,m;
+
+int main()
+{
+    int cnt=0;
+    while(scanf("%d%d",&n,&m)!=EOF)
+    {
+        if(!n&&!m)break;
+        UnionFind uf(n);
+        while(m--)
+        {
+            int a,b;
+            scanf("%d%d",&a,&b);
+            uf.merge(a,b);
+        }
+        cnt++;
+        printf("Case %d: %d\n",cnt,uf.count());
+    }
+    return 0;
+}
