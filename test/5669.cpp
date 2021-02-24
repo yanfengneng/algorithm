@@ -39,6 +39,11 @@ int main()
 {
     vector<vector<int>> groups={{1,-1,-1},{3,-2,0}};
     vector<int> nums={1,-1,0,1,-1,-1,3,-2,0};
-    cout<<Solution().canChoose(groups,nums)<<endl;
+    try{
+        cout<<Solution().canChoose(groups,nums)<<endl;
+    }
+    catch(const exception& e){
+        cout<<e.what()<<endl;
+    }
     return 0;
 }

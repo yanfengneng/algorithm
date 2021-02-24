@@ -46,6 +46,7 @@ int query(int x)
             res=res*2+u;
         }
     }
+    // 由于上面我们得到的异或另一个数组元素，此时我们需要将这个数组元素与x想异或得到 最到异或值
     res^=x;
     return res;
 }
