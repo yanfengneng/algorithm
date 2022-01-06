@@ -165,8 +165,6 @@ void LoadDate()
 
 int main()
 {
-    createHead();
-    while(1){
-        add();
-    }
+    createHead(); 
+    
 }

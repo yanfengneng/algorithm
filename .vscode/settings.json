@@ -6,7 +6,18 @@
     "code-runner.preserveFocus": false,
     "code-runner.saveFileBeforeRun": true,
     "C_Cpp.updateChannel": "Insiders",
-    "terminal.integrated.shellArgs.windows": ["/K chcp 65001 >nul"],//解决终端中文乱码
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": [
+                "-NoExit", "/c", "chcp 65001"
+            ],
+            /*
+            /K chcp 65001或-NoExit", "/c", "chcp 65001的含义是在运终端时候将编码设置为65001
+            */
+        },
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
     "terminal.integrated.fontFamily": "Lucida Console",
     "files.autoSave": "afterDelay",
     "editor.fontSize": 14,
