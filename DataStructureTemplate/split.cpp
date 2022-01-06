@@ -45,5 +45,6 @@ int main()
     for(auto c:a)cout<<c<<"!";
     cout<<endl;
     for(auto c:b)cout<<c<<"!";
+    cout<<endl;
     return 0;
 }
