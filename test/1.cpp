@@ -1,14 +1,15 @@
 #include <iostream>
-#include <thread>
- 
-void fun()
-{
-   std::cout << "A new thread!" << std::endl;
-}
- 
+using namespace std;
+
+struct s1{
+    int a;//0-3
+    char b;//4
+    int c;//8-11
+    double d;//16-23
+};
+
 int main()
 {
-    std::thread t(fun);
-    t.join();
-    std::cout << "Main thread!" << std::endl;
+    cout<<sizeof(s1)<<endl;
+    return 0;
 }
