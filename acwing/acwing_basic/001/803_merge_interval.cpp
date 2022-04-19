@@ -34,7 +34,7 @@ void merge(vector<PII>& segs)
     }
 
     // 也要把最后这个区间加到答案里面去
-    // 这里加if判断是防止我们输入了一个空的区间
+    // 这里加if判断是防止我们输出了一个空的区间
     if(st!=-2e9)res.push_back({st,ed});
 
     // 更新segs
