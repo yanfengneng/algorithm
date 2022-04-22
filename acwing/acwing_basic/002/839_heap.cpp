@@ -10,10 +10,12 @@ int h[N],ph[N],hp[N],len=0;
 
 void heap_swap(int a,int b)
 {
-    // 交换彼此的下标
+    // 由于ph与hp互为反函数，hp[a]表示获得节点a的插入次序，hp[b]表示获得节点b的插入次序
+    // 获得次序后，然后根据次序交换节点a b的下标，ph[次序]=下标，因此此次我们交换的是下标值
     swap(ph[hp[a]],ph[hp[b]]);
-    // 交换彼此的第x次查出
+    // 交换节点a、b的插入次序
     swap(hp[a],hp[b]);
+    // 交换节点a、b存储的节点值
     swap(h[a],h[b]);
 }
 
