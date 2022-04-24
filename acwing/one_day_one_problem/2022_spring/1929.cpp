@@ -20,6 +20,7 @@ int dfs(int x,int y,int d)
 
     return dfs(x+dx[d],y+dy[d],d)+1;
 }
+
  int main()
  {
     scanf("%d%d",&n,&m);
