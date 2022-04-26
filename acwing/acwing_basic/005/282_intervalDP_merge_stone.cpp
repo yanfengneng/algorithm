@@ -22,7 +22,7 @@ int main()
         for(int l=1;l+len-1<=n;++l)// 所有区间长度为len的左端点，左端点的最大值为n-len+1，位置=长度-1
         {
             int r=l+len-1;// 右端点为左端点+len-1，减1是减去左端点所占的点
-            // 枚举将[l,r]划分为两个子集所有的点k
+            // 枚举将[l,r]划分为两个子集所有的点k，f[l][k]+f[k+1][r]再加上合并区间[l,r]的代价
             for(int k=l;k<r;++k)
                 f[l][r]=min(f[l][r],f[l][k]+f[k+1][r]+pre[r]-pre[l-1]);
         }
