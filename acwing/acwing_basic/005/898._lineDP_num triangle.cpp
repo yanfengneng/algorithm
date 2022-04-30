@@ -25,6 +25,19 @@ void dp1()
     cout<<res<<endl;
 }
 
+// 自底向上进行dp
+void dp2()
+{
+    // 初始化最后一行状态
+    for(int i=1;i<=n;++i)f2[n][i]=a[n][i];
+    // 从倒数第二行开始状态转移
+    for(int i=n-1;i>=1;--i)
+        for(int j=1;j<=i;++j)
+            f2[i][j]=max(f2[i+1][j],f2[i+1][j+1])+a[i][j];
+    // 最后到达起点的状态为最大路径值
+    cout<<f2[1][1]<<endl;
+}
+
 int main()
 {
     cin>>n;
@@ -32,6 +45,7 @@ int main()
     for(int i=1;i<=n;++i)
         for(int j=1;j<=i;++j)
             cin>>a[i][j];
-    dp1();
+    // dp1();
+    dp2();
     return 0;
 }
