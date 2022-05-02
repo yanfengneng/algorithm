@@ -2,43 +2,43 @@
 using namespace std;
 
 const int N = 1010;
+int n,m;
 int v[N],w[N];
+int f1[N][N];
+int f2[N];
 
-int f[N][N];
-int dp[N];
-
-int main()
+// 二维dp：对于体积的顺序没有限制，想怎么循环就怎么循环，没有任何限制
+void dp1()
 {
-    int n,m;
-    scanf("%d%d",&n,&m);
-    for(int i=1;i<=n;++i)scanf("%d%d",&v[i],&w[i]);
-
-    // 朴素版二维dp
-    /*
-    for(int i=1;i<=n;++i)
-        for(int j=0;j<=m;++j)
-            for(int k=0;k*v[i]<=j;++k)
-                // k=0表示f[i-1][j-k*v[i]]+w[i]*k=f[i-1][j]，表示我们只用考虑前i-1个物品的最大价值，不用考虑第i个物品
-                f[i][j]=max(f[i][j],f[i-1][j-k*v[i]]+w[i]*k);
-    */
-    
-    // 优化版二维dp
     for(int i=1;i<=n;++i)
         for(int j=0;j<=m;++j)
         {
-            f[i][j]=f[i-1][j];
-            if(j>=v[i])f[i][j]=max(f[i][j],f[i][j-v[i]]+w[i]);
+            // 不选物品i且总体积不超过j
+            f1[i][j]=f1[i-1][j];
+            // f[i][j-v[i]]=max(f[i-1][j-k*v[i]])，其中k大于等于1；所以只用f[i][j-v[i]]+w就可以推出f[i][j]的所有右子集了
+            if(j>=v[i])f1[i][j]=max(f1[i][j],f1[i][j-v[i]]+w[i]);
         }
+        
+    cout<<f1[n][m]<<endl;
+}
 
-    // 二维dp优化为一维dp
+// 优化后的一维dp：由小到大的枚举体积就行，这样可以保证较小值j-v[i]以被计算出来，是第i层的f[i][j-v[i]]
+void dp2()
+{
     for(int i=1;i<=n;++i)
-        for(int j=v[i];j<=m;++j)
-            // 由于j是由小到大枚举的，且j-v[i]<j，那么必定f[j-v[i]]先被计算，说明我们这里用的是第i层的j-v[i]，即f[i][j-v[i]]满足上述二维dp
-            // 与01背包唯一的区别在于j的枚举方向不一样，01背包是j由大到小枚举的，而完全背包是j由小到大枚举的
-            // 因为01背包的j要是从小到大枚举的，那么我们用的是f[i][j-v[i]]，而不是f[i-1][j-v[i]]，只由大到小枚举，才能保证使用f[i-1][j-v[i]]
-            // 因为这样可保证f[j-v[i]]没有被计算过，所以01背包要从大到小枚举
-            dp[j]=max(dp[j],dp[j-v[i]]+w[i]);
-    
-    printf("%d\n",dp[m]);
+        for(int j=v[i];j<=m;++j){
+            // 由于此时的f2[j]还未被更新，所以此时用的就是上一层的f2[i-1][j]，这个等式恒成立；
+            // f2[i][j]=f2[i-1][j]  ==>>  f2[j]=f2[j]
+            // j-v[i]<=j，所以由小到大枚举j时，较小值j-v[i]已经被先计算出来了，此时的f[j-v[i]]就是第i层的f[i][j-v[i]]
+            f2[j]=max(f2[j],f2[j-v[i]]+w[i]);
+        }
+    cout<<f2[m]<<endl;
+}
+
+int main()
+{
+    cin>>n>>m;
+    for(int i=1;i<=n;++i)cin>>v[i]>>w[i];
+    dp2();
     return 0;
 }
