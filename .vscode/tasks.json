@@ -5,7 +5,10 @@
         "-g",
         "${file}",
         "-o",// 指定输出文件名，不加该参数则默认输出a.exe，Linux下默认a.out
-        "${fileDirname}/${fileBasenameNoExtension}.exe"
+        "${fileDirname}/${fileBasenameNoExtension}.exe",
+        "-std=c++11", // 语言标准，可根据自己的需要进行修改，写c++要换成c++的语言标准，比如c++11.14.17
+        "-std=c++14", 
+        "-std=c++17"
     ],
     "problemMatcher": {
         "owner": "cpp",
