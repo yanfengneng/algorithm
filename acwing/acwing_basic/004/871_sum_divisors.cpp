@@ -34,7 +34,7 @@ int main()
         // p 为底数，a 为指数
         int p=prime.first,a=prime.second;
         LL t=1;
-        // 算p^0+p^1+...+p^a，即约数的一个括号
+        // 算p^0+p^1+...+p^a，即约数的一个括号。第一项为p+1，第二项为p*(p+1)+1=p^2+p+1...第a项为p^a+p^(a-1)+...+1
         while(a--)t=(p*t+1)%mod;
         // (p1^0 + p1^1 + ... + p1^c1) * ... * (pk^0 + pk^1 + ... + pk^ck)
         res=res*t%mod;
