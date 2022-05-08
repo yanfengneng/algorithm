@@ -22,13 +22,14 @@ int power(int a,int b,int p)
 
 int main()
 {
-    int n;
-    // 输入数据量较大，所以尽量使用c语言的输入输出
-    scanf("%d",&n);
+    int n;scanf("%d",&n);
     while(n--)
     {
-        int a,b,p;scanf("%d%d%d",&a,&b,&p);
-        printf("%d\n",power(a,b,p));
+        int a,p;scanf("%d%d",&a,&p);
+        // a是p的倍数时，是无解的
+        if(a%p==0)puts("impossible");
+        // 否则a的逆元是a^(p-2)%p
+        else printf("%d\n",power(a,p-2,p));
     }
     return 0;
 }
