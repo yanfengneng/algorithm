@@ -1,6 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// c++ 实现 replace
+string replace(string source, string a, string b)
+{
+    string::size_type pos = 0;
+    // 在字符串 source 中从下标 pos 开始寻找子串 a
+    while((pos=source.find(a,pos))!=string::npos)   //替换所有指定子串
+    {
+        source.replace(pos, a.length(), b);
+        pos+=b.length();
+    }
+    return source;
+}
+
 // 提供两个版本的c++分割字符串
 // 版本1：利用istringstream+getline划分字符串
 vector<string> split_1(string str)
@@ -46,5 +59,8 @@ int main()
     cout<<endl;
     for(auto c:b)cout<<c<<"!";
     cout<<endl;
+
+    string s="1.1.1.1";
+    cout<<replace(s,".","[.]")<<endl;
     return 0;
 }
