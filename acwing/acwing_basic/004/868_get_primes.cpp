@@ -35,6 +35,21 @@ void get_primes(int n)
     }
 }
 
+// Å·À­É¸Ñ¡
+bool v[N];
+void oula_primes(int n)
+{
+    memset(v,0,sizeof v);
+    int m=0;
+    for(int i=2;i<=n;++i)
+    {
+        if(v[i])continue;
+        m++;
+        for(int j=2*i;j<=n;j+=i)v[j]=1;
+    }
+    cout<<m<<endl;
+}
+
 int main()
 {
     int n;
