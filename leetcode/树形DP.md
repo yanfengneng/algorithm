@@ -2,7 +2,7 @@
 
 # 树的自底向上
 
-![image-20220520162330708](C:\Users\小能\AppData\Roaming\Typora\typora-user-images\image-20220520162330708.png)
+![image-20220725231432658](../../md_image/image-20220725231432658.png)
 
 <font color=alice>求树形 DP 时，一般都是从根节点开始递归求，然后递归到 u 这个点时，先把 u 的两个儿子节点先处理好。</font>==也就是说 树形 DP 是采用的树的自底向上的求法，任意一个节点，需要用到它的左右孩子的返回值，通常的递归出口为叶子节点以及非法的子树。==
 
@@ -20,9 +20,7 @@
 >
 > 3）利用左右孩子的返回结果来实现自己的逻辑，并继续向上返回；
 
-![image-20220520150656874](C:\Users\小能\AppData\Roaming\Typora\typora-user-images\image-20220520150656874.png)
-
-![image-20220520150739989](C:\Users\小能\AppData\Roaming\Typora\typora-user-images\image-20220520150739989.png)
+![image-20220725231544432](../../md_image/image-20220725231544432.png)
 
 # 树的自顶向下
 
