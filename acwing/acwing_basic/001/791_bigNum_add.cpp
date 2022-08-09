@@ -1,38 +1,33 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<int> add(vector<int>& A,vector<int>& B)
+vector<int> add(vector<int> &A, vector<int>& B)
 {
-    vector<int> C;
-    int t=0;
-    for(int i=0;i<A.size()||i<B.size();++i)
-    {
-        if(i<A.size())t+=A[i];
-        if(i<B.size())t+=B[i];
-        C.push_back(t%10);// 个位留下
-        t/=10;// 进位保留
+    vector<int> res;
+    // 两个个位数字相加的进位最多为1，如两个最大个位数字相加：9+9 = 18；再加上一个进位 1，最终结果也为 19，不会出现进位 2 的情况。
+    int n=A.size(),m=B.size(),carry=0;
+    for(int i=0;i<n||i<m;++i){
+        if(i<n)carry+=A[i];
+        if(i<m)carry+=B[i];
+        res.push_back(carry%10);
+        carry/=10;
     }
-    // 若还存在进位，则高位在补1
-    if(t)C.push_back(1);
-    return C;
+    // 若还存在进位，则在高位补1
+    if(carry)res.push_back(1);
+    // 最终结果也是小端存储，因此从后往前打印才是最终答案
+    return res;
 }
 
 int main()
 {
-    string a,b;
+    string a,b;cin>>a>>b;
+    // 采用小端存储，即低位数字存储在前，高位数字存储再后，便于将进位的结果直接添加结果数组后面，不用插入结果数组首位，造成时间的浪费
     vector<int> A,B;
+    for(int i=a.size()-1;i>=0;i--)A.push_back(a[i]-'0');
+    for(int i=b.size()-1;i>=0;i--)B.push_back(b[i]-'0');
 
-    cin>>a>>b;// a = "123456"
-    // size为无符号数，size-1之后会被转换为int的，也就是-1，若直接输出size-1，会直接输出-1的补码
-    // 数组中最高位(最大值位)是存放在数组尾部的，个位(最低位)是存放在数组前面的
-    for(int i=a.size()-1;i>=0;--i)A.push_back(a[i]-'0');// A = [6 5 4 3 2 1]
-    for(int i=b.size()-1;i>=0;--i)B.push_back(b[i]-'0');
-
-    vector<int> C=add(A,B);
-
-    // 数组中最高位(最大值位)是存放在数组尾部的，个位(最低位)是存放在数组前面的
+    auto C=add(A,B);
+    // 最终结果也是小端存储，因此从后往前打印才是最终答案
     for(int i=C.size()-1;i>=0;i--)cout<<C[i];
     cout<<endl;
     return 0;
