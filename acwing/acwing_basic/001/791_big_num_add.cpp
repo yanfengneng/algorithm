@@ -21,7 +21,7 @@ vector<int> add(vector<int> &A, vector<int>& B)
 int main()
 {
     string a,b;cin>>a>>b;
-    // 采用小端存储，即低位数字存储在前，高位数字存储再后，便于将进位的结果直接添加结果数组后面，不用插入结果数组首位，造成时间的浪费
+    // 采用小端存储，即低位数字存储在前，高位数字存储在后，便于将进位的结果直接添加结果数组后面，不用插入结果数组首位，造成时间的浪费
     vector<int> A,B;
     for(int i=a.size()-1;i>=0;i--)A.push_back(a[i]-'0');
     for(int i=b.size()-1;i>=0;i--)B.push_back(b[i]-'0');

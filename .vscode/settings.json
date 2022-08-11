@@ -43,7 +43,10 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "xlocale": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "type_traits": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
