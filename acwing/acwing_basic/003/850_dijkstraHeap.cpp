@@ -19,6 +19,7 @@ void add(int a,int b,int c)
 }
 
 // 总时间复杂度为O(mlogn)
+// 注意堆优化版的dijstra算法是点出队列是进行打标记，因为只有只有堆顶弹出来的点才能确定最小值，因此只有在出队列的时候对点打标记
 int dijkstra(int s)
 {
     // 初始化距离

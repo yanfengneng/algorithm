@@ -80,7 +80,7 @@ int dijkstra_heap(int s,int t)
     // 利用堆的自动排序功能，最短距离会排在队头
     priority_queue<PII,vector<PII>,greater<PII>> heap;
     heap.push({0,s});
-
+    // 注意堆优化版的dijstra算法是点出队列是进行打标记，因为只有只有堆顶弹出来的点才能确定最小值，因此只有在出队列的时候对点打标记
     // 开始更新s到所有点的最短距离
     while(heap.size())
     {
