@@ -20,7 +20,7 @@ int extend(queue<string>& q,unordered_map<string,int>& da,unordered_map<string,i
                 string state=t.substr(0,i)+b[j]+t.substr(i+a[j].size());
                 // 若扩展到的状态在队列b中，则此时两队列相遇了，距离为 A->t->state->B
                 if(db.count(state))return da[t]+1+db[state];
-                // 由于每个状态只会被访问一次，因此放过的状态就不需要再次访问了
+                // 由于每个状态只会被访问一次，因此访问的状态就不需要再次访问了
                 if(da.count(state))continue;
                 // 更新起点到state的距离，以及在队列中加入这个状态
                 da[state]=da[t]+1,q.push(state);

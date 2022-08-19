@@ -33,7 +33,7 @@ string move0(string state)
     return get();
 }
 
-// 第四列查到第一列
+// 第四列插到第一列
 string move1(string state)
 {
     Set(state);
