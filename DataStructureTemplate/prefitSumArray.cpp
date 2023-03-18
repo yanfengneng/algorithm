@@ -1,22 +1,24 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1010;
-int a[N][N],s[N][N];
-int main(){
-    int m , n ,k;
-    cin>>m>>n>>k;
-      for(int i = 1;i <= m;i++)
-            for(int j = 1;j <= n;j++)
-                cin>>a[i][j];
-        for(int i = 1;i <= m;i++)
-            for(int j = 1;j <= n;j++)
-                s[i][j] = s[i-1][j] + s[i][j-1] -s[i-1][j-1] + a[i][j];
-    while(k--){
-      
-        int x1,y1,x2,y2;
-        cin>>x1>>y1>>x2>>y2;
-        cout<<s[x2][y2] - s[x1-1][y2]-s[x2][y1-1]+s[x1-1][y1-1]<<endl;;
-        
+
+// 前缀和+hashmap经典套路：统计数组中有多少对相同的数字，使用先查询再插入的方法
+int solve1(vector<int> pre)
+{
+    unordered_map<int,int> cnt; 
+    int res=0;
+    // 0 0 1 1 0 0 2 3 5
+    for(int x:pre){
+        // 比如说查询到第四个 0 时，之前的三个 0 都被计数了，此时第四个 0 与前面的三个 0 构成相同的数对，有三对。
+        // 所以对于数组中统计相同数字的对数时，使用hashmap的经典套路：先查询后插入
+        res+=cnt[x]++;
     }
+    return res;
+}
+
+int main()
+{
+    vector<int> pre={0,0,1,1,0,0,2,3,5};
+    cout<<solve1(pre)<<endl;
+    return 0;
 }
